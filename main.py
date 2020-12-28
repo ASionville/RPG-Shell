@@ -76,7 +76,13 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 			##Boucle de combat
 			while not (JOUEUR.est_mort() or ennemi.est_mort()):
 				#Attaque du joueur sur l'ennemi
-				degats = min(int((JOUEUR.get_force() + JOUEUR.get_vie())/COEFF_JOUEUR), randint(1, 2))
+				degats = int((	JOUEUR.get_vie()*(randint(5,15)/10) +
+								JOUEUR.get_force()*(randint(5,15)/10) +
+								JOUEUR.get_chance()*(randint(5,15)/10))/3)
+
+				#Le moins de dégats possible = 1 ou 2
+				degats = int(min(degats * COEFF_JOUEUR, randint(1, 2)))
+
 				ennemi.appliquer_degats(degats)
 				_print(f"Tu as infligé {degats} points de dégats à l'ennemi !", "vert")
 				_print(f"Il lui reste {max(ennemi.get_vie(), 0)} points de vie\n", "vert")
@@ -84,9 +90,15 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 				if ennemi.est_mort():
 					break
+					
 				#Attaque de l'ennemi sur le joueur
-				degats = min(int((ennemi.get_force() + ennemi.get_vie())/COEFF_ENNEMI), randint(1, 2))
-				JOUEUR.appliquer_degats(degats)
+				degats = int((	ennemi.get_vie()*(randint(5,15)/10) +
+								ennemi.get_force()*(randint(5,15)/10) +
+								ennemi.get_chance()*(randint(5,15)/10))/3)
+
+				#Le moins de dégats possible = 1 ou 2
+				degats = int(min(degats * COEFF_ENNEMI, randint(1, 2)))
+				joueur.appliquer_degats(degats)
 				_print(f"Tu as reçu {degats} points de dégats !", "rouge")
 				_print(f"Il te reste {max(JOUEUR.get_vie(), 0)} points de vie", "rouge")
 				sleep(3)

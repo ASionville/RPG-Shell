@@ -74,20 +74,20 @@ def demander_difficulte():
 		if (c.upper() == "1"):
 			_print('Niveau Facile', "vert")
 			difficulte = 1
-			coeff_joueur = 2
-			coeff_ennemi = 5
+			coeff_joueur = 1.3
+			coeff_ennemi = 0.8
 			taille = 7
 		elif (c.upper() == "2"):
 			_print('Niveau Moyen', "jaune")
 			difficulte = 2
-			coeff_joueur = 3
-			coeff_ennemi = 3
+			coeff_joueur = 1
+			coeff_ennemi = 1
 			taille = 8
 		elif (c.upper() == "3"):
 			_print('Niveau Difficile', "rouge")
 			difficulte = 3
-			coeff_joueur = 4
-			coeff_ennemi = 2
+			coeff_joueur = 0.8
+			coeff_ennemi = 1.3
 			taille = 10
 		else:
 			print('Entrée invalide :(')
