@@ -71,7 +71,6 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 			if JOUEUR.get_chance() > ennemi.get_chance():
 				_print("Nous l'avons échappé belle !", "vert")
-				_print("Voyons ce qu'il y a dans cette pièce !", "jaune")
 			else:
 				_print("Nous n'avons pas réussi à nous échapper à temps, il va falloir combatre !", "rouge")
 				entites.combat(JOUEUR, ennemi)

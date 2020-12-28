@@ -5,6 +5,7 @@
 """
 from utils import random_20, _print
 
+from random import randint
 class Entite(object):
 	"""docstring for Entite
 	"""
