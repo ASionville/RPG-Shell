@@ -1,5 +1,6 @@
 dist/
 build/
 music/
-main.spec
+*.spec
 __pycache__/
+build.bat
