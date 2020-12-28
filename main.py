@@ -112,9 +112,11 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 			else:
 				JOUEUR.ramasser_argent(objet)
+			#On enlève l'objet pour éviter la duplication si on revient
+			contenu[1] = None
+
 	#Pour laisser le temps de lire
 	sleep(3)
-
 
 #Fin du jeu
 if joueur.est_mort():
