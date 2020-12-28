@@ -46,6 +46,8 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 	
 	#Déplacement et point sur l'état du joueur
 	PLATEAU.mouvement_joueur()
+	
+	vider_console()
 
 	_print(f"\n\nTu entres dans la salle {position_joueur[0]}-{position_joueur[1]}", "jaune")
 	_print(f"Ton état pour le moment :", "jaune")
