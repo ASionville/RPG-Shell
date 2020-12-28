@@ -98,7 +98,7 @@ class Plateau():
 		"""
 		self.matrice = []
 		self.__taille = taille
-		self.creer_matrice(self.__taille)
+		self.matrice = self.creer_matrice(self.__taille)
 		self.__position_joueur = [1, 1]
 
 	def creer_matrice(self, taille:int):
@@ -110,13 +110,9 @@ class Plateau():
 		    matrice (list): Matrice contenant les salles du plateau
 		"""
 		# Création d'une matrice carrée de {taille} par {taille}
-		for i in range(taille):
-			for j in range(taille):
-				salle = Salle(i+1, j+1)
-				salle.remplir_salle(i+1, j+1, taille)
-				self.matrice.append(salle)
+		matrice = [[Salle(i + 1, j + 1) for j in range(taille)] for i in range(taille)] 
 
-		return self.matrice
+		return matrice
 
 	def get_mouvements_possibles(self, position_joueur: list):
 		"""	Fonction qui récupère les mouvements possible selon la position du joueur
@@ -163,14 +159,14 @@ class Plateau():
 		""" Fonction qui vide la case du joueur afin d'éviter des bugs de duplication
 		"""
 
-		self.matrice[self.__position_joueur[0]*self.__taille + self.__position_joueur[1]].contenu = [None, None]
+		self.matrice[self.__position_joueur[0]][self.__position_joueur[1]].contenu = [None, None]
 
 	def get_contenu_case_courante(self):
 		"""	Fonction qui récupère le contenu de la case où se situe le joueur
 		Retourne:
 		    list: Contenu de la salle courante
 		"""
-		return self.matrice[self.__position_joueur[0]*self.__taille + self.__position_joueur[1]].contenu
+		return self.matrice[self.__position_joueur[0]][self.__position_joueur[1]].contenu
 
 	def get_position_joueur(self):
 		"""	Fonction qui récupère la position actuelle du joueur
@@ -184,7 +180,7 @@ class Plateau():
 		Retourne:
 		    bool: Est ce que le joueur est à la dernière case
 		"""
-		return self.__position_joueur == [self.__taille, self.__taille]
+		return self.__position_joueur == [self.__taille + 1, self.__taille + 1]
 
 	def __str__(self):
 		"""	Transformation Plateau -> str
@@ -194,6 +190,6 @@ class Plateau():
 		txt = ''
 		for i in range(self.__taille):
 			for j in range(self.__taille):
-				txt += "| " + str(self.matrice[i*self.__taille + j]) + " "
+				txt += "| " + str(self.matrice[i][j]) + " "
 			txt += "\n"
 		return txt
