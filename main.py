@@ -74,7 +74,7 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 		else:
 
 			##Boucle de combat
-			while not (JOUEUR.est_mort() or ennemi.est_mort()):
+			while not JOUEUR.est_mort():
 				#Attaque du joueur sur l'ennemi
 				degats = int((	JOUEUR.get_vie()*(randint(5,15)/10) +
 								JOUEUR.get_force()*(randint(5,15)/10) +
@@ -90,7 +90,7 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 				if ennemi.est_mort():
 					break
-					
+
 				#Attaque de l'ennemi sur le joueur
 				degats = int((	ennemi.get_vie()*(randint(5,15)/10) +
 								ennemi.get_force()*(randint(5,15)/10) +

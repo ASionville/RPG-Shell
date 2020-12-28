@@ -64,7 +64,7 @@ class Argent(Objet):
 		"""	Transformation Argent -> str
 		
 		Retourne:
-		    str: Texte descriptif de la nourriture
+		    str: Texte descriptif de l'argent
 		"""
 		txt = f"Oh ça brille! Des écus, ce sont des écus !\n(+{self.get_points()} points de fortune)"
 		return txt	
