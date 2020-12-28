@@ -1,8 +1,9 @@
 """ Module entites
 
 	Contient les classe Entite, Ennemi et Joueur
+	Ainsi que la fonction de combat
 """
-from utils import random_20
+from utils import random_20, _print
 
 class Entite(object):
 	"""docstring for Entite
@@ -94,3 +95,37 @@ class Joueur(Entite):
 		    nourriture (TYPE): Description
 		"""
 		self._Entite__vie += nourriture.get_points()
+
+
+def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
+	##Boucle de combat
+	while not JOUEUR.est_mort():
+		#Attaque du joueur sur l'ennemi
+		degats = int((	JOUEUR.get_vie()*(randint(5,15)/10) +
+						JOUEUR.get_force()*(randint(5,15)/10) +
+						JOUEUR.get_chance()*(randint(5,15)/10))/3)
+
+		#Le moins de dégats possible = 1 ou 2
+		degats = int(min(degats * COEFF_JOUEUR, randint(1, 2)))
+
+		ennemi.appliquer_degats(degats)
+		_print(f"Tu as infligé {degats} points de dégats à l'ennemi !", "vert")
+		_print(f"Il lui reste {max(ennemi.get_vie(), 0)} points de vie\n", "vert")
+		sleep(3)
+
+		if ennemi.est_mort():
+			break
+
+		#Attaque de l'ennemi sur le joueur
+		degats = int((	ennemi.get_vie()*(randint(5,15)/10) +
+						ennemi.get_force()*(randint(5,15)/10) +
+						ennemi.get_chance()*(randint(5,15)/10))/3)
+
+		#Le moins de dégats possible = 1 ou 2
+		degats = int(min(degats * COEFF_ENNEMI, randint(1, 2)))
+		JOUEUR.appliquer_degats(degats)
+		_print(f"Tu as reçu {degats} points de dégats !", "rouge")
+		_print(f"Il te reste {max(JOUEUR.get_vie(), 0)} points de vie", "rouge")
+		sleep(3)
+
+	return JOUEUR, ennemi

@@ -54,6 +54,10 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 	##Détection d'un ennemi
 	contenu = PLATEAU.get_contenu_case_courante()
 	ennemi = contenu[0]
+
+	# Par défaut, pour éviter une erreur de variable non existante
+	fuite = True
+
 	if ennemi == None:
 		_print("Ouf, pas d'ennemi en vue", "vert")
 
@@ -70,48 +74,19 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 				_print("Voyons ce qu'il y a dans cette pièce !", "jaune")
 			else:
 				_print("Nous n'avons pas réussi à nous échapper à temps, il va falloir combatre !", "rouge")
-		
+				entites.combat(JOUEUR, ennemi)
+
 		else:
-
-			##Boucle de combat
-			while not JOUEUR.est_mort():
-				#Attaque du joueur sur l'ennemi
-				degats = int((	JOUEUR.get_vie()*(randint(5,15)/10) +
-								JOUEUR.get_force()*(randint(5,15)/10) +
-								JOUEUR.get_chance()*(randint(5,15)/10))/3)
-
-				#Le moins de dégats possible = 1 ou 2
-				degats = int(min(degats * COEFF_JOUEUR, randint(1, 2)))
-
-				ennemi.appliquer_degats(degats)
-				_print(f"Tu as infligé {degats} points de dégats à l'ennemi !", "vert")
-				_print(f"Il lui reste {max(ennemi.get_vie(), 0)} points de vie\n", "vert")
-				sleep(3)
-
-				if ennemi.est_mort():
-					break
-
-				#Attaque de l'ennemi sur le joueur
-				degats = int((	ennemi.get_vie()*(randint(5,15)/10) +
-								ennemi.get_force()*(randint(5,15)/10) +
-								ennemi.get_chance()*(randint(5,15)/10))/3)
-
-				#Le moins de dégats possible = 1 ou 2
-				degats = int(min(degats * COEFF_ENNEMI, randint(1, 2)))
-				joueur.appliquer_degats(degats)
-				_print(f"Tu as reçu {degats} points de dégats !", "rouge")
-				_print(f"Il te reste {max(JOUEUR.get_vie(), 0)} points de vie", "rouge")
-				sleep(3)
-
+			entites.combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI)
 		musicmanager.end_bataille()
 
 	if JOUEUR.est_mort():
 		break
 
 	#Si on fuit on ne récupère pas ce que protège l'ennemi
-	if not fuite :
-		objet = contenu[1]
+	if ennemi != None and not fuite :
 
+		objet = contenu[1]
 		if objet == None:
 			_print("Dommage, il n'y a rien du tout ici", "jaune")
 
@@ -124,8 +99,8 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 			else:
 				JOUEUR.ramasser_argent(objet)
-			#On enlève l'objet pour éviter la duplication si on revient
-			contenu[1] = None
+	#On vide la case pour éviter la duplication si on revient
+	PLATEAU.vider_case_joueur()
 
 	#Pour laisser le temps de lire
 	sleep(3)
