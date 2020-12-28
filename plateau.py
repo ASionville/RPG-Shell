@@ -85,6 +85,7 @@ class Plateau():
 		creer_matrice(taille): Créé la matrice des salles du plateau
 		get_mouvements_possibles(position_joueur): Récupère les mouvements possible selon la position du joueur
 		mouvement_joueur(): Fait déplacer le joueur
+		vider_case_joueur() : Vide la case du joueur
 		get_contenu_case_courante(): Récupère le contenu de la case où se situe le joueur
 		get_position_joueur(): Récupère la position actuelle du joueur
 		get_fin(): Dit si le joueur est arrivé à la fin du plateau (il a gagné)
@@ -157,6 +158,12 @@ class Plateau():
 			self.__position_joueur[1] -= 1
 		elif mouvement == "D":
 			self.__position_joueur[1] += 1
+
+	def vider_case_joueur(self):
+		""" Fonction qui vide la case du joueur afin d'éviter des bugs de duplication
+		"""
+
+		self.matrice[self.__position_joueur[0]*self.__taille + self.__position_joueur[1]].contenu = [None, None]
 
 	def get_contenu_case_courante(self):
 		"""	Fonction qui récupère le contenu de la case où se situe le joueur
