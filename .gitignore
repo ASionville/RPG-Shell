@@ -2,3 +2,4 @@ dist/
 build/
 music/
 main.spec
+__pycache__/
