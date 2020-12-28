@@ -4,3 +4,4 @@ music/
 *.spec
 __pycache__/
 build.bat
+test.py
