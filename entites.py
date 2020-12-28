@@ -5,6 +5,7 @@
 """
 from utils import random_20, _print
 
+from time import sleep
 from random import randint
 class Entite(object):
 	"""docstring for Entite
@@ -107,7 +108,7 @@ def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
 						JOUEUR.get_chance()*(randint(5,15)/10))/3)
 
 		#Le moins de dégats possible = 1 ou 2
-		degats = int(min(degats * COEFF_JOUEUR, randint(1, 2)))
+		degats = int(max(degats * COEFF_JOUEUR, randint(1, 2)))
 
 		ennemi.appliquer_degats(degats)
 		_print(f"Tu as infligé {degats} points de dégats à l'ennemi !", "vert")
@@ -123,7 +124,7 @@ def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
 						ennemi.get_chance()*(randint(5,15)/10))/3)
 
 		#Le moins de dégats possible = 1 ou 2
-		degats = int(min(degats * COEFF_ENNEMI, randint(1, 2)))
+		degats = int(max(degats * COEFF_ENNEMI, randint(1, 2)))
 		JOUEUR.appliquer_degats(degats)
 		_print(f"Tu as reçu {degats} points de dégats !", "rouge")
 		_print(f"Il te reste {max(JOUEUR.get_vie(), 0)} points de vie", "rouge")
