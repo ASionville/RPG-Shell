@@ -159,14 +159,14 @@ class Plateau():
 		""" Fonction qui vide la case du joueur afin d'éviter des bugs de duplication
 		"""
 
-		self.matrice[self.__position_joueur[0]][self.__position_joueur[1]].contenu = [None, None]
+		self.matrice[self.__position_joueur[0]-1][self.__position_joueur[1]-1].contenu = [None, None]
 
 	def get_contenu_case_courante(self):
 		"""	Fonction qui récupère le contenu de la case où se situe le joueur
 		Retourne:
 		    list: Contenu de la salle courante
 		"""
-		return self.matrice[self.__position_joueur[0]][self.__position_joueur[1]].contenu
+		return self.matrice[self.__position_joueur[0]-1][self.__position_joueur[1]-1].contenu
 
 	def get_position_joueur(self):
 		"""	Fonction qui récupère la position actuelle du joueur
