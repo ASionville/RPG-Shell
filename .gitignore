@@ -5,3 +5,4 @@ music/
 __pycache__/
 build.bat
 test.py
+scores.*
