@@ -99,7 +99,7 @@ class Plateau():
 		self.matrice = []
 		self.__taille = taille
 		self.matrice = self.creer_matrice(self.__taille)
-		self.__position_joueur = [1, 1]
+		self.__position_joueur = [6, 7]
 
 	def creer_matrice(self, taille:int):
 		"""	Fonction qui créé la matrice des salles du plateau
@@ -180,7 +180,7 @@ class Plateau():
 		Retourne:
 		    bool: Est ce que le joueur est à la dernière case
 		"""
-		return self.__position_joueur == [self.__taille + 1, self.__taille + 1]
+		return self.__position_joueur == [self.__taille, self.__taille]
 
 	def __str__(self):
 		"""	Transformation Plateau -> str

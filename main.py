@@ -46,7 +46,10 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 	
 	#Déplacement et point sur l'état du joueur
 	PLATEAU.mouvement_joueur()
-	
+
+	if PLATEAU.get_fin():
+		break
+
 	vider_console()
 
 	_print(f"Tu entres dans la salle {position_joueur[0]}-{position_joueur[1]}", "jaune")
@@ -105,28 +108,32 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 	#Pour laisser le temps de lire
 	sleep(3)
-
+vider_console()
 #Fin du jeu
-if joueur.est_mort():
+if JOUEUR.est_mort():
 	_print("Tu commences à sentir que tu ne vas pas y arriver, les coups de tes adversaires sont trop puissants", "rouge")
 	_print("Tu vois tes amis tomber un par un, et puis tu te rends compte que tu es seul, seul contre l'ennemi", "rouge")
 	_print("Malheureusement, celui-ci est trop fort, trop rapide, trop agile", "rouge")
-	_print("Tes coups sont faibles, les siens fracas...", "rouge")
+	_print("Tes coups sont faibles, les siens fracassants...", "rouge")
 
 	sleep(0.8)
+	vider_console()
 	fin_mort()
 
 else:
 	_print("Tu réalises ce que tu viens d'accomplir avec tes camarades", "vert")
 	_print("Vous avez vaincu chaque menace, et survécu jusqu'au trésor", "vert")
-	_print("Mais avant toute chose, il est temps de fêter ça avec les tiens", "vert1")
+	_print("Mais avant toute chose, il est temps de fêter ça avec les tiens", "vert")
 
 	sleep(0.8)
+	vider_console()
 	fin_victoire()
 
 print(f"Ton score : {JOUEUR.get_fortune()}")
 enregister_score(JOUEUR.get_fortune(), COEFF_SCORE)
 
-print("\n\nTous les scores :")
+print("\nTous les scores :")
 for score in get_scores():
 	print(score)
+
+input()

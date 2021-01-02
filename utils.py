@@ -82,21 +82,21 @@ def demander_difficulte():
 			coeff_joueur = 1.3
 			coeff_ennemi = 0.8
 			taille = 7
-			coeff_score = 1
+			difficulte = 1
 
 		elif (c.upper() == "2"):
 			_print('Niveau Moyen choisi', "jaune")
 			coeff_joueur = 1
 			coeff_ennemi = 1
 			taille = 8
-			coeff_score = 2
+			difficulte = 2
 
 		elif (c.upper() == "3"):
 			_print('Niveau Difficile choisi', "rouge")
 			coeff_joueur = 0.8
 			coeff_ennemi = 1.3
 			taille = 10
-			coeff_score = 3
+			difficulte = 3
 
 		else:
 			print('Entrée invalide :(')
@@ -180,14 +180,14 @@ def demander_nom():
 	return nom
 
 def enregister_score(score: int, coeff_score: str):
-	nom = "Mr anonyme"
+	nom = "Mr Anonyme"
 	date_ajd = date.fromtimestamp(time.time())
 
 	change = False
 	with shelve.open("files/scores.txt") as f:
 		try:
-			score_avant = f[nom][1]
-			if score_avant > score * coeff_score:
+			score_avant = int(f[nom][1])
+			if score_avant < score * coeff_score:
 				change = True
 		except KeyError:
 			change = True
@@ -200,7 +200,7 @@ def get_scores():
 	with shelve.open("files/scores.txt") as f:
 		cles = list(f.keys())
 		for nom in cles:
-			yield "\t".join(f[nom])
+			yield f'{nom}\t:\t{f[nom][1]}\t ({f[nom][0]})'
 
 def _print(text: str, couleur="blanc", nouvelle_ligne_apres=True):
 	""" Fonction print modifiée pour écrire du texte en couleur
