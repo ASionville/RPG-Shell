@@ -17,9 +17,9 @@ musicmanager = MusicManager()
 
 
 ##Introduction
-splashscreen()
-sleep(5)
-vider_console()
+#splashscreen()
+#sleep(5)
+#vider_console()
 
 COEFF_JOUEUR, COEFF_ENNEMI, TAILLE = demander_difficulte()
 vider_console()
@@ -27,7 +27,7 @@ vider_console()
 PLATEAU = Plateau(TAILLE)
 JOUEUR = entites.Joueur()
 position_joueur = PLATEAU.get_position_joueur()
-_print(get_texte_intro(TAILLE), "jaune")
+#_print(get_texte_intro(TAILLE), "jaune")
 
 
 ##Faire un point sur l'état du joueur avant de commencer
@@ -48,7 +48,7 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 	
 	vider_console()
 
-	_print(f"\n\nTu entres dans la salle {position_joueur[0]}-{position_joueur[1]}", "jaune")
+	_print(f"Tu entres dans la salle {position_joueur[0]}-{position_joueur[1]}", "jaune")
 	_print(f"Ton état pour le moment :", "jaune")
 	_print(f"Vie : {JOUEUR.get_vie()}\t\tForce : {JOUEUR.get_force()}\t\t\tFortune : {JOUEUR.get_fortune()}", "jaune")
 
@@ -74,7 +74,7 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 				_print("Nous l'avons échappé belle !", "vert")
 			else:
 				_print("Nous n'avons pas réussi à nous échapper à temps, il va falloir combatre !", "rouge")
-				entites.combat(JOUEUR, ennemi)
+				entites.combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI)
 
 		else:
 			entites.combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI)
@@ -116,9 +116,9 @@ if joueur.est_mort():
 	fin_mort()
 
 else:
-	_print("Tu réalises ce que tu viens d'accomplir avec tes camarades", "rouge")
-	_print("Vous avez vaincu chaque menace, et survécu jusqu'au trésor", "rouge")
-	_print("Mais avant toute chose, il est temps de fêter ça avec les tiens", "rouge")
+	_print("Tu réalises ce que tu viens d'accomplir avec tes camarades", "vert")
+	_print("Vous avez vaincu chaque menace, et survécu jusqu'au trésor", "vert")
+	_print("Mais avant toute chose, il est temps de fêter ça avec les tiens", "vert1")
 
 	sleep(0.8)
 	fin_victoire()
