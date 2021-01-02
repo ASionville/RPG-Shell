@@ -21,7 +21,7 @@ musicmanager = MusicManager()
 #sleep(5)
 #vider_console()
 
-COEFF_JOUEUR, COEFF_ENNEMI, TAILLE = demander_difficulte()
+COEFF_JOUEUR, COEFF_ENNEMI, TAILLE, DIFFICULTE = demander_difficulte()
 vider_console()
 
 PLATEAU = Plateau(TAILLE)

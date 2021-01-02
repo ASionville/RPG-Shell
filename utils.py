@@ -67,32 +67,35 @@ def demander_difficulte():
 				Taille du plateau (int)
 	"""
 	difficulte = ""
+	print("Niveau Facile    : \tTu es avantagé, pas de multiplicateur de points")
+	print("Niveau Moyen     : \tPas d'avantage, points x 2")
+	print("Niveau Difficile : \tL'ennemi est avantagé, points x 3")
 	while difficulte not in [1, 2, 3]:
-		click.echo('Avec quelle difficulte veux-tu jouer ? [1/2/3] ', nl=False)
+		click.echo('\nAvec quelle difficulté veux-tu jouer ? [1/2/3] ', nl=False)
 		c = click.getchar()
 		click.echo()
 		if (c.upper() == "1"):
-			_print('Niveau Facile', "vert")
-			difficulte = 1
+			_print('Niveau Facile choisi', "vert")
+			difficulte = "Facile"
 			coeff_joueur = 1.3
 			coeff_ennemi = 0.8
 			taille = 7
 		elif (c.upper() == "2"):
-			_print('Niveau Moyen', "jaune")
-			difficulte = 2
+			_print('Niveau Moyen choisi', "jaune")
+			difficulte = "Moyen"
 			coeff_joueur = 1
 			coeff_ennemi = 1
 			taille = 8
 		elif (c.upper() == "3"):
-			_print('Niveau Difficile', "rouge")
-			difficulte = 3
+			_print('Niveau Difficile choisi', "rouge")
+			difficulte = "Difficile"
 			coeff_joueur = 0.8
 			coeff_ennemi = 1.3
 			taille = 10
 		else:
 			print('Entrée invalide :(')
 
-	return coeff_joueur, coeff_ennemi, taille
+	return coeff_joueur, coeff_ennemi, taille, difficulte
 
 def demander_mouvement(mvmts_possibles: str):
 	""" Fonction qui demande au joueur le mouvement qu'il souhaite effectuer
@@ -160,6 +163,15 @@ def vider_console():
 	#Mac/Linux
 	else: 
 		system('clear') 
+
+def demander_nom():
+	_print("Un grand roi doit se doter d'un grand nom.\nComment devrions-nous t'appeler à présent ?", "jaune")
+	nom = ""
+	while nom == "":
+		nom = input()
+		if nom == "":
+			print("Entrée incorrecte, veuillez recommencer")
+	return nom
 
 def _print(text: str, couleur="blanc", nouvelle_ligne_apres=True):
 	""" Fonction print modifiée pour écrire du texte en couleur
