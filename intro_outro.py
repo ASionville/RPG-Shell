@@ -8,7 +8,9 @@ from utils import _print
 from pyfiglet import Figlet
 from colorama import init, Fore, Style
 
+#Nécessaire pour colorama
 init(autoreset=True)
+
 def splashscreen():
 	""" Fonction qui écrit le splashscreen (écran d'accueil)
 	"""
@@ -24,7 +26,7 @@ def get_texte_intro(taille: int):
 	Args:
 	    taille (int): Taille du plateau
 	
-	Returns:
+	Retourne:
 	    str: Texte d'introduction
 	"""
 	return(open("files/intro.txt", encoding='utf-8').read().replace("X", str(taille)))

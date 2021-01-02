@@ -67,6 +67,7 @@ def demander_difficulte():
 	    tuple: 	Coefficient d'attaque du joueur (int)
 				Coefficient d'attaque de l'ennemi (int)
 				Taille du plateau (int)
+				Multiplicateur de points (int)
 	"""
 	difficulte = ""
 	print("Niveau Facile    : \tTu es avantagé, pas de multiplicateur de points")
@@ -171,6 +172,11 @@ def vider_console():
 		system('clear') 
 
 def demander_nom():
+	""" Fonction qui demande le pseudo du joueur pour la sauvegarde
+	
+	Retourne:
+	    str: Pseudo du joueur
+	"""
 	_print("Un grand roi doit se doter d'un grand nom.\nComment devrions-nous t'appeler à présent ?", "jaune")
 	nom = ""
 	while nom == "":
@@ -180,16 +186,26 @@ def demander_nom():
 	return nom
 
 def enregister_score(score: int, coeff_score: str):
+	""" Fonction qui enregistre le score du joueur dans un fichier
+	si le précédant a été battu ou que le joueur est nouveau
+	
+	Args:
+	    score (int): Le score fait par le joueur
+	    coeff_score (str): Le coefficient de score (cf demander_diifficulte)
+	
+	Returns:
+	    bool: Le score a été changé ou ajouté, ou non
+	"""
 	nom = "Mr Anonyme"
 	date_ajd = date.fromtimestamp(time.time())
 
-	change = False
+	change = False # Par défaut : on ne change rien
 	with shelve.open("files/scores.txt") as f:
 		try:
 			score_avant = int(f[nom][1])
 			if score_avant < score * coeff_score:
 				change = True
-		except KeyError:
+		except KeyError: # Si le joueur n'est pas ecore enregistré
 			change = True
 		if change:
 			stock = (str(date_ajd), str(score * coeff_score))
@@ -197,6 +213,12 @@ def enregister_score(score: int, coeff_score: str):
 	return change
 
 def get_scores():
+	""" Fonction-générateur qui renvoie la liste de tous les scores
+	enregistrés dans le fichier (fichier inutilisable tel quel)
+	
+	Génèrateur:
+	    str: Un texte avec le pseudo, le score et la date pour chaque score
+	"""
 	with shelve.open("files/scores.txt") as f:
 		cles = list(f.keys())
 		for nom in cles:

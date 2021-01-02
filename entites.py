@@ -7,99 +7,138 @@ from utils import random_20, _print
 
 from time import sleep
 from random import randint
+
+
 class Entite(object):
-	"""docstring for Entite
+	
+	"""	Classe Entite, représentant une Entité du jeu
+	Attributs:
+		vie (int) [privé] : Points de vie
+	    force (int) [privé] : Points de force
+	    chance (int) [privé] : Points de chance
+
+	Méthodes :
+		est_mort() : Dit si l'entité est morte ou pas
+		get_vie() : Donne les points de vie de l'entité
+		get_force() : Donne les points de force de l'entité
+		get_chance() : Donne les points de chance de l'entité
+		appliquer_degats(degats) : Applique des dégats à l'entité
 	"""
+
 	def __init__(self):
-		"""Summary
+		""" Fonction d'initialisation de l'entité
 		"""
 		self.__vie = random_20()
 		self.__force = random_20()
 		self.__chance = random_20()
 	
 	def est_mort(self):
-		"""Summary
+		""" Fonction qui dit si l'entité est morte ou pas
 		
-		Returns:
-		    TYPE: Description
+		Retourne:
+		    bool: Est ce que l'entité est morte ou non
 		"""
 		return self.__vie <= 0
 
 	def get_vie(self):
-		"""Summary
+		""" Fonction qui donne les points de vie de l'entité
 		
-		Returns:
-		    TYPE: Description
+		Retourne:
+		    int: Nombre de points de vie
 		"""
 		return self.__vie
 
 	def get_force(self):
-		"""Summary
+		""" Fonction qui donne les points de force de l'entité
 		
-		Returns:
-		    TYPE: Description
+		Retourne:
+		    int: Nombre de points de force
 		"""
 		return self.__force
 
 	def get_chance(self):
-		"""Summary
+		""" Fonction qui donne les points de chance de l'entité
 		
-		Returns:
-		    TYPE: Description
+		Retourne:
+		    int: Nombre de points de chance
 		"""
 		return self.__chance
 
 	def appliquer_degats(self, degats: int):
-		"""Summary
+		""" Fonction qui applique des dégats à l'entité
 		
 		Args:
-		    degats (int): Description
+		    degats (int): Nombre de points de vie à retirer
 		"""
 		self.__vie -= degats
 
 class Ennemi(Entite):
-	"""docstring for Ennemi
+	"""	Classe Ennemi, représentant un Ennemi du jeu
+	Hérite de tous les attributs et de toutes les méthodes de Entite
 	"""
 	def __init__(self):
-		"""Summary
+		""" Fonction d'initialisation de l'ennemi
 		"""
 		super().__init__()
 
 class Joueur(Entite):
-	"""docstring for Joueur
+	"""	Classe Joueur, représentant le joueur dans le jeu
+	Hérite de tous les attributs et de toutes les méthodes de Entite
+	Attributs:
+	    fortune (int) [privé] : Quantité d'argent possédé par le joueur (points de fortune)
+
+	Méthodes :
+		get_fortune() : Donne les points de fortune du joueur
+		ramasser_argent(argent) : Ajoute au joueur la quantité d'argent (cf objets.py)
+		manger(nourriture) : Ajoute des points de vie au joueur par la nourriture (cf objets.py)
 	"""
 	def __init__(self):
-		"""Summary
+		""" Fonction d'initialisation du joueur
 		"""
 		super().__init__()
 		self.__fortune = 0
 
 	def get_fortune(self):
-		"""Summary
+		""" Donne les points de fortune du joueur
 		
-		Returns:
-		    TYPE: Description
+		Retourne:
+		    int: Points de fortune du joueur
 		"""
 		return self.__fortune
 
 	def ramasser_argent(self, argent):
-		"""Summary
+		"""Ajoute au joueur la quantité d'argent (cf objets.py)
 		
 		Args:
-		    argent (TYPE): Description
+		    argent (Argent): Quantité d'argent (cf objets.py)
 		"""
 		self.__fortune += argent.get_points()
 
 	def manger(self, nourriture):
-		"""Summary
+		"""Ajoute au joueur la quantité de nourriture (cf objets.py)
 		
 		Args:
-		    nourriture (TYPE): Description
+		    nourriture (Nourriture): Quantité de nourriture (cf objets.py)
 		"""
 		self._Entite__vie += nourriture.get_points()
 
 
+
+
 def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
+	""" Fonction de combat entre le joueur et un ennemi
+	
+	Args:
+	    JOUEUR (Joueur): Le joueur qui combat
+	    ennemi (Ennemi): L'ennemi qui combat
+
+		#Voir demander_difficulte dans utils.py
+	    COEFF_JOUEUR (float/int): Le coefficient d'attaque du joueur
+	    COEFF_ENNEMI (float/int): Le coefficient d'attaque de l'ennemi
+	
+	Returns:
+	    tuple: Le joueur et l'ennemi
+	"""
 	##Boucle de combat
 	while not JOUEUR.est_mort():
 		#Attaque du joueur sur l'ennemi

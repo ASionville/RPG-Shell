@@ -14,8 +14,8 @@ class Salle():
 	Attributs:
 		position (tuple) [privé] : Postion (x, y) de la salle
 	    contenu (liste): Contenu de la pièce :
-	    	Contenu[0] : Ennemi
-	    	Contenu[1] : Objet (Argent/Nourriture)
+	    	contenu[0] : Ennemi
+	    	contenu[1] : Objet (Argent/Nourriture)
 
 	Méthodes :
 		remplir_salle(x, y, taille): Ajoute du contenu à une salle
@@ -99,7 +99,9 @@ class Plateau():
 		self.matrice = []
 		self.__taille = taille
 		self.matrice = self.creer_matrice(self.__taille)
-		self.__position_joueur = [6, 7]
+		#Attention, le joueur et les cases ont des coordonées en 1-1 => 7-7
+		#alors que leur postion dans le tableau est sur l'intervale 0-0 => 6-6
+		self.__position_joueur = [1, 1]
 
 	def creer_matrice(self, taille:int):
 		"""	Fonction qui créé la matrice des salles du plateau

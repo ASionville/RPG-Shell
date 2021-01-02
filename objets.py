@@ -7,6 +7,7 @@ from utils import random_5
 class Objet():
 	"""	Classe Objet
 		Sert de classe mère pour les objets précis
+
 	Attributs :
 		points (int) [privé] : Nombre de points (valeur) de l'objet
 	"""
@@ -26,6 +27,7 @@ class Objet():
 class Nourriture(Objet):
 	""" Classe Nourriture, représentant de la nourriture présente dans une salle
 		Classe Fille de la classe Objet
+
 	Attributs: 
 		cf classe Objet
 
@@ -49,6 +51,7 @@ class Nourriture(Objet):
 class Argent(Objet):
 	"""	Classe Argent, représentant des pièces d'or présentes dans une salle
 		Classe Fille de la classe Objet
+		
 	Attributs: 
 		cf classe Objet
 

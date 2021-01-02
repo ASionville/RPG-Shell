@@ -18,9 +18,9 @@ musicmanager = MusicManager()
 
 
 ##Introduction
-#splashscreen()
-#sleep(5)
-#vider_console()
+splashscreen()
+sleep(5)
+vider_console()
 
 COEFF_JOUEUR, COEFF_ENNEMI, TAILLE, COEFF_SCORE = demander_difficulte()
 vider_console()
@@ -28,7 +28,7 @@ vider_console()
 PLATEAU = Plateau(TAILLE)
 JOUEUR = entites.Joueur()
 position_joueur = PLATEAU.get_position_joueur()
-#_print(get_texte_intro(TAILLE), "jaune")
+_print(get_texte_intro(TAILLE), "jaune")
 
 
 ##Faire un point sur l'état du joueur avant de commencer
@@ -108,7 +108,10 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 	#Pour laisser le temps de lire
 	sleep(3)
+
 vider_console()
+
+
 #Fin du jeu
 if JOUEUR.est_mort():
 	_print("Tu commences à sentir que tu ne vas pas y arriver, les coups de tes adversaires sont trop puissants", "rouge")
@@ -129,9 +132,11 @@ else:
 	vider_console()
 	fin_victoire()
 
+##Gestion des scores
 print(f"Ton score : {JOUEUR.get_fortune()}")
 enregister_score(JOUEUR.get_fortune(), COEFF_SCORE)
 
+#Affichage de tous les meilleurs scores
 print("\nTous les scores :")
 for score in get_scores():
 	print(score)
