@@ -5,7 +5,9 @@
 """
 import time
 import click
+import shelve
 
+from datetime import date
 from os import system, name
 from random import choice, randint
 from colorama import init, Fore, Style
@@ -74,24 +76,28 @@ def demander_difficulte():
 		click.echo('\nAvec quelle difficulté veux-tu jouer ? [1/2/3] ', nl=False)
 		c = click.getchar()
 		click.echo()
+
 		if (c.upper() == "1"):
 			_print('Niveau Facile choisi', "vert")
-			difficulte = "Facile"
 			coeff_joueur = 1.3
 			coeff_ennemi = 0.8
 			taille = 7
+			coeff_score = 1
+
 		elif (c.upper() == "2"):
 			_print('Niveau Moyen choisi', "jaune")
-			difficulte = "Moyen"
 			coeff_joueur = 1
 			coeff_ennemi = 1
 			taille = 8
+			coeff_score = 2
+
 		elif (c.upper() == "3"):
 			_print('Niveau Difficile choisi', "rouge")
-			difficulte = "Difficile"
 			coeff_joueur = 0.8
 			coeff_ennemi = 1.3
 			taille = 10
+			coeff_score = 3
+
 		else:
 			print('Entrée invalide :(')
 
@@ -172,6 +178,29 @@ def demander_nom():
 		if nom == "":
 			print("Entrée incorrecte, veuillez recommencer")
 	return nom
+
+def enregister_score(score: int, coeff_score: str):
+	nom = "Mr anonyme"
+	date_ajd = date.fromtimestamp(time.time())
+
+	change = False
+	with shelve.open("files/scores.txt") as f:
+		try:
+			score_avant = f[nom][1]
+			if score_avant > score * coeff_score:
+				change = True
+		except KeyError:
+			change = True
+		if change:
+			stock = (str(date_ajd), str(score * coeff_score))
+			f[nom] = stock
+	return change
+
+def get_scores():
+	with shelve.open("files/scores.txt") as f:
+		cles = list(f.keys())
+		for nom in cles:
+			yield "\t".join(f[nom])
 
 def _print(text: str, couleur="blanc", nouvelle_ligne_apres=True):
 	""" Fonction print modifiée pour écrire du texte en couleur

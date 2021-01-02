@@ -3,7 +3,8 @@ import objets
 from plateau import Plateau
 from musicmanager import MusicManager
 from intro_outro import splashscreen, get_texte_intro, fin_mort, fin_victoire
-from utils import demander_difficulte, demander_fuite, vider_console, _print
+from utils import demander_difficulte, demander_fuite, vider_console, _print,\
+					enregister_score, get_scores
 
 from time import sleep
 from random import randint
@@ -21,7 +22,7 @@ musicmanager = MusicManager()
 #sleep(5)
 #vider_console()
 
-COEFF_JOUEUR, COEFF_ENNEMI, TAILLE, DIFFICULTE = demander_difficulte()
+COEFF_JOUEUR, COEFF_ENNEMI, TAILLE, COEFF_SCORE = demander_difficulte()
 vider_console()
 
 PLATEAU = Plateau(TAILLE)
@@ -124,3 +125,8 @@ else:
 	fin_victoire()
 
 print(f"Ton score : {JOUEUR.get_fortune()}")
+enregister_score(JOUEUR.get_fortune(), COEFF_SCORE)
+
+print("\n\nTous les scores :")
+for score in get_scores():
+	print(score)
