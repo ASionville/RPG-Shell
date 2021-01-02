@@ -41,7 +41,6 @@ while not(JOUEUR.est_mort()) or not(PLATEAU.get_fin()):
 
 	vider_console()
 
-	#Récupérer mvmts possibles
 	position_joueur = PLATEAU.get_position_joueur()
 	
 	#Déplacement et point sur l'état du joueur
