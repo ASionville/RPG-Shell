@@ -34,16 +34,15 @@ class Salle():
 		#Contenu[ennemi, objet]
 		self.contenu = [None, None]
 
-	def remplir_salle(self, x: int, y: int, taille: int):
+	def remplir_salle(self, taille: int):
 		"""	Fonction qui ajoute du contenu à une salle
 		Args:
-		    x (int): Position x de la pièce
-		    y (int): Position y de la pièce
 		    taille (int): Taille totale du plateau
 		
 		Retourne:
-		    None
+		    La salle, une fois remplie
 		"""
+		x, y = self.__position
 		if x == 1 and y == 1:
 			return
 		if x == taille and y == taille:
@@ -58,6 +57,7 @@ class Salle():
 			else:
 				objet = Argent()
 			self.contenu[1] = objet
+		return self
 
 	def get_position(self) -> tuple:
 		"""	Fonction pour récupérer la position d'une salle sur le plateau
@@ -110,7 +110,7 @@ class Plateau():
 		    matrice (list): Matrice contenant les salles du plateau
 		"""
 		# Création d'une matrice carrée de {taille} par {taille}
-		matrice = [[Salle(i + 1, j + 1) for j in range(taille)] for i in range(taille)] 
+		matrice = [[Salle(i + 1, j + 1).remplir_salle(taille) for j in range(taille)] for i in range(taille)] 
 
 		return matrice
 
