@@ -136,7 +136,7 @@ def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
 	    COEFF_JOUEUR (float/int): Le coefficient d'attaque du joueur
 	    COEFF_ENNEMI (float/int): Le coefficient d'attaque de l'ennemi
 	
-	Returns:
+	Retourne:
 	    tuple: Le joueur et l'ennemi
 	"""
 	##Boucle de combat

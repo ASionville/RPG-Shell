@@ -16,7 +16,6 @@ init(autoreset=True)
 vider_console()
 musicmanager = MusicManager()
 
-
 ##Introduction
 splashscreen()
 sleep(5)
