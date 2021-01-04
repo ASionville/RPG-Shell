@@ -141,7 +141,7 @@ def combat(JOUEUR, ennemi, COEFF_JOUEUR, COEFF_ENNEMI):
 	"""
 	##Boucle de combat
 	while not JOUEUR.est_mort():
-		#Attaque du joueur sur l'ennemi
+		#Attaque du joueur sur l'ennemi (coeffs entre 0.5 et 1.5)
 		degats = int((	JOUEUR.get_vie()*(randint(5,15)/10) +
 						JOUEUR.get_force()*(randint(5,15)/10) +
 						JOUEUR.get_chance()*(randint(5,15)/10))/3)
