@@ -2,6 +2,7 @@ import entites
 import objets
 from plateau import Plateau
 from musicmanager import MusicManager
+from filesmanager import check_fichiers_ok
 from intro_outro import splashscreen, get_texte_intro, fin_mort, fin_victoire
 from utils import demander_difficulte, demander_fuite, vider_console, _print,\
 					enregister_score, get_scores
@@ -11,6 +12,7 @@ from random import randint
 from colorama import init, Fore, Style
 
 ##Initialisation
+check_fichiers_ok()
 init(autoreset=True)
 
 vider_console()

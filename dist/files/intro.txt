@@ -1,8 +1,0 @@
-Tu es Thorin, Ecu de Chêne, toi et tes amis venez d'entrer dans la Montagne
-
-Ta mission aujourd'hui est de guider tes camarades vers le trésor
-Cette quête est dangereuse, tu rencontreras de nombreux ennemis avant d'arriver dans la dernière salle (la salle X-X)
-Néanmoins, dans certaines d'entre elles, tu trouvera de la nourriture ou des pièces d'or
-
-Le but bien évidemment, est d'atteindre la salle qui se trouve tout au fond, en récupérant un maximum de pièces sur ton passage.
-

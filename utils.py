@@ -11,6 +11,7 @@ from datetime import date
 from os import system, name
 from random import choice, randint
 from colorama import init, Fore, Style
+from filesmanager import get_files_path
 
 def random_20():
 	""" Fonction aléatoire modifiée pour un résultat entier entre 1 et 20
@@ -200,7 +201,8 @@ def enregister_score(score: int, coeff_score: str):
 	date_ajd = date.fromtimestamp(time.time())
 
 	change = False # Par défaut : on ne change rien
-	with shelve.open("../files/scores.txt") as f:
+	path = get_files_path()
+	with shelve.open(path + "scores.txt") as f:
 		try:
 			score_avant = int(f[nom][1])
 			if score_avant < score * coeff_score:
@@ -219,7 +221,8 @@ def get_scores():
 	Génèrateur:
 	    str: Un texte avec le pseudo, le score et la date pour chaque score
 	"""
-	with shelve.open("../files/scores.txt") as f:
+	path = get_files_path()
+	with shelve.open(path + "scores.txt") as f:
 		cles = list(f.keys())
 		for nom in cles:
 			yield f'{nom}\t:\t{f[nom][1]}\t ({f[nom][0]})'

@@ -8,6 +8,7 @@ Librairies necessaires :
     * Pyfiglet
     * Click
     * Shelve
+    * Pypaperclip
 
 
 Pour chacune d'entre elle, taper :

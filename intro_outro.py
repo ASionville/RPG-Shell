@@ -7,6 +7,7 @@ from utils import _print
 
 from pyfiglet import Figlet
 from colorama import init, Fore, Style
+from filesmanager import get_files_path
 
 #Nécessaire pour colorama
 init(autoreset=True)
@@ -29,7 +30,8 @@ def get_texte_intro(taille: int):
 	Retourne:
 	    str: Texte d'introduction
 	"""
-	return(open("files/intro.txt", encoding='utf-8').read().replace("X", str(taille)))
+	path = get_files_path()
+	return(open(path + "intro.txt", encoding='utf-8').read().replace("X", str(taille)))
 
 def fin_mort():
 	""" Fonction qui écrit l'écran de fin si le joueur est mort
