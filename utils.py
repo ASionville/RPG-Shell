@@ -2,6 +2,20 @@
 
 	Contient des fonctions qui seront utilisées par d'autres modules
 	Ne contient pas de classe
+
+	Fonctions :
+		random_20(): Aléatoire modifié pour un résultat entier entre 1 et 20
+		random_5(): Aléatoire modifié pour un résultat entier entre 1 et 5
+		choix_ennemi(): Dit au hasard si un ennemi est présent dans une salle
+		choix_objet(): Dit au hasard quel objet est présent dans une salle
+		demander_difficulte(): Demande au joueur de choisir la difficulté du jeu
+		demander_mouvement(mvmts_possibles): Demande au joueur le mouvement qu'il souhaite effectuer
+		demander_fuite(): Demande au joueur s'il veut fuire un ennemi ou pas
+		vider_console(): Vide la console
+		demander_nom(): Demande le pseudo du joueur pour la sauvegarde
+		enregistrer_score(score, coeff_score): Enregistre le score du joueur dans un fichier
+		get_scores(): Renvoie la liste de tous les scores enregistrés
+		_print(text, couleur, nouvelle_ligne_apres): Print modifié pour écrire du texte en couleur
 """
 import time
 import click
