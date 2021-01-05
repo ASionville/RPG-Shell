@@ -130,7 +130,7 @@ class Plateau():
 		    		G : Aller à Gauche
 		    		D : Aller à Droite
 		"""
-		ligne, col = position_joueur[0], position_joueur[1]
+		ligne, col = position_joueur
 		mouvements_possibles = "HBGD"
 
 		if ligne == 1 : # Sur la première ligne (en haut)
