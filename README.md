@@ -21,6 +21,7 @@ Si cela ne marche pas, essayer
 Ce logiciel a été testé sur Windows 10 64bits, sa portabilité peut être effective sur d'autres système mais n'est pas garantie.
 
 Une version compilée pour windows est disponible dans le dossier [dist](/dist). Ce fichier ne doit pas être déplacé.
+[Scan VirursTotal du .exe](https://www.virustotal.com/gui/file/016b52996e4ea67dd0560d955d5aedebaa3dda64042dba860bb6630cacebb71e/detection)
 
 
 Avant utilisation, veuillez prendre note de [la license](LICENSE)
