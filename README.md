@@ -3,11 +3,11 @@ Un RPG sur le Seigneur des Anneaux...mais en shell
 
 Librairies necessaires :
 
-    * `Pygame`
-    * `Colorama`
-    * `Pyfiglet`
-    * `Click`
-    * `Shelve`
+    * Pygame
+    * Colorama
+    * Pyfiglet
+    * Click
+    * Shelve
 
 
 Pour chacune d'entre elle, taper :
@@ -18,6 +18,9 @@ Si cela ne marche pas, essayer
 
 
 Ce logiciel a été testé sur Windows 10 64bits, sa portabilité peut être effective sur d'autres système mais n'est pas garantie.
+
+Une version compilée pour windows est disponible dans le dossier [dist](/dist)
+
 
 Avant utilisation, veuillez prendre note de [la license](LICENSE)
 
