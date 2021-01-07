@@ -211,7 +211,7 @@ def enregister_score(score: int, coeff_score: str):
 	Returns:
 	    bool: Le score a été changé ou ajouté, ou non
 	"""
-	nom = "Mr Anonyme"
+	nom = demander_nom()
 	date_ajd = date.fromtimestamp(time.time())
 
 	change = False # Par défaut : on ne change rien
